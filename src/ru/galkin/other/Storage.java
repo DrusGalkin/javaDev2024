@@ -6,20 +6,14 @@ public class Storage<T>{
 
     public Storage(T t){
         this.t = t;
-        System.out.println(this.t);
     }
 
     public T getItem(){
         return this.t;
     }
 
-    public void check(T t){
-//        type = new IntegerType();
-//        this.t =  (T) type.check(t);
-//
-//        if(t instanceof String) {
-//            type = new StrungType();
-//            this.t =  (T) type.check(t);
-//        }
+    public T getAlternative(T obj){
+        if(obj == null) return this.t = obj;
+        return this.t;
     }
 }

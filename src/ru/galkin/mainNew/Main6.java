@@ -9,14 +9,13 @@ import java.util.Optional;
 
 public class Main6 {
     public static void main(String[] args){
-//        Box<Integer> box = new Box<>(3);
-//        System.out.println( box.getItem());
-//        System.out.println(box);
+        Box<Integer> box = new Box<>(3);
+        System.out.println( box.getItem());
+        System.out.println(box);
 
         Integer a = null;
         String b = null;
 
-        Storage<Integer> storage = new Storage<>(a);
-
+        Storage<Integer> storage2 = new Storage<>(67);
     }
 }
