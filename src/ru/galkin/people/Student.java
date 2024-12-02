@@ -1,11 +1,13 @@
 package ru.galkin.people;
 
+import ru.galkin.other.Compare;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Student implements Cloneable{
+public class Student implements Cloneable, Compare<Student> {
     private String name;
     private List<Integer> grade;
     DecimalFormat df = new DecimalFormat("#.0");
@@ -73,5 +75,15 @@ public class Student implements Cloneable{
     @Override
     public int hashCode() {
         return Objects.hash(name, grade, df);
+    }
+
+    @Override
+    public Student compare(Student student) {
+        int res = 0;
+        if(this.averageScore() == student.averageScore()){
+            System.out.println("Студенты равный по оценкам");
+            return this;
+        }
+        return res > 0 ? student : this;
     }
 }

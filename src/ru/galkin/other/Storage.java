@@ -2,7 +2,6 @@ package ru.galkin.other;
 
 public class Storage<T>{
     private T t;
-    private Type type;
 
     public Storage(T t){
         this.t = t;
@@ -13,7 +12,7 @@ public class Storage<T>{
     }
 
     public T getAlternative(T obj){
-        if(obj == null) return this.t = obj;
+        if(obj == null) return obj;
         return this.t;
     }
 }
