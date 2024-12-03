@@ -2,6 +2,7 @@ package ru.galkin.people;
 
 import ru.galkin.other.Compare;
 
+import javax.print.attribute.standard.PresentationDirection;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,12 +79,10 @@ public class Student implements Cloneable, Compare<Student> {
     }
 
     @Override
-    public Student compare(Student student) {
-        int res = 0;
-        if(this.averageScore() == student.averageScore()){
-            System.out.println("Студенты равный по оценкам");
-            return this;
-        }
-        return res > 0 ? student : this;
+    public int compare(Student student) {
+        int res =(int)(averageScore() - student.averageScore());
+        if (res == 0) return 0;
+        else if (res < 0) return -1;
+        return 1;
     }
 }

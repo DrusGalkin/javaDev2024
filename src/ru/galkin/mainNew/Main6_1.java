@@ -19,9 +19,9 @@ public class Main6_1 {
         storage2.getAlternative(-99);
 
         //3+4
-        Student s1 = new Student("Андрей",5,3,3,3,3,3,3,5);
-        Student s2 = new Student("неАндрей",2,3,3,3,3,3,3,2);
-        System.out.println(s1.compare(s2));
+        Student s1 = new Student("Андрей",5,5,5,5,5,5,5,5,5,5,5,5,5,5,5);
+        Student s2 = new Student("неАндрей",2,2,2,2,2,2,2,2,2,2,2,2,2);
+        System.out.println("tooooo - " + s1.compare(s2));System.out.println("tooo2oo - " + s2.compare(s2));
 
         //6
         Stack stack = new Stack();
