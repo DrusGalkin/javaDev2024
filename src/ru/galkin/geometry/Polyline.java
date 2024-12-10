@@ -26,9 +26,9 @@ public class Polyline implements GetLengthLineOrPolyline, PolygonalChain{
 	public int getLength(){
 		int length = 0;
 
-		for(int i = 0; i < points.size()-1; i++){
-			length += new Line(points.get(i), points.get(i+1)).getLength();
-		}
+//		for(int i = 0; i < points.size()-1; i++){
+//			length += Line.line(points.get(i), points.get(i+1)).getLength();
+//		}
 		return length;
 	}
 
@@ -56,8 +56,8 @@ public class Polyline implements GetLengthLineOrPolyline, PolygonalChain{
 		List<Point> that = new ArrayList<>(this.points);
 		List<Point> other = new ArrayList<>(polyline.points);
 
-		if(this.getClass()==ClosedPolyline.class) that.add(this.points.getFirst());
-		if(polyline.getClass()==ClosedPolyline.class) other.add(polyline.points.getFirst());
+//		if(this.getClass()==ClosedPolyline.class) that.add(this.points.getFirst());
+//		if(polyline.getClass()==ClosedPolyline.class) other.add(polyline.points.getFirst());
 
 		return Objects.equals(that, other);
 	}

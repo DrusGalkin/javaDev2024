@@ -2,7 +2,7 @@ package ru.galkin.geometry;
 
 import java.util.Objects;
 
-public class Point implements Cloneable{
+public class Point implements Cloneable {
 	
 	private int x,y;
 	
