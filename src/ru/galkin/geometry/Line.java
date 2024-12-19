@@ -29,6 +29,7 @@ public class Line<Z extends Point> implements GetLengthLineOrPolyline, Polygonal
         return new Line<>(new Point3D(x1, y1, z1), new Point3D(x2, y2, z2));
     }
 
+
     public void setStart(Z point){
         if(point.getClass() != p2.getClass())
             throw new ClassCastException("2D or 3D!");
