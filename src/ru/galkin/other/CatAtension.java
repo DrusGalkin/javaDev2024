@@ -10,7 +10,7 @@ public class CatAtension implements Meow {
     }
 
     @Override
-    public String catMayMayMay() {
-        return "ВНИМАНИЕ!" + cat.catMayMayMay();
+    public String song() {
+        return "ВНИМАНИЕ!" + cat.song();
     }
 }

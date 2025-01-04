@@ -1,6 +1,6 @@
 package ru.galkin.geometry;
 
-public abstract class Figure implements PolygonalChain{
+public abstract class Figure implements PolygonalChain, Geometryable{
     private Point point;
 
     public Figure(int num1, int num2){
@@ -19,6 +19,12 @@ public abstract class Figure implements PolygonalChain{
 
     public Point getPoint(){
         return this.point;
+    }
+
+    @Override
+    public void shift(String name, int num) {
+        if("x".equals(name)) this.point.setX(num);
+        if ("y".equals(name)) this.point.setY(num);
     }
 
     public abstract void draw();

@@ -39,12 +39,12 @@ public class DivineImplements implements Meow {
     }
 
     @Override
-    public String catMayMayMay() {
+    public String song() {
         return "meow";
     }
 
     public String toString(){
-        return catMayMayMay();
+        return song();
     }
 
     //5

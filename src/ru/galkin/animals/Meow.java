@@ -1,5 +1,5 @@
 package ru.galkin.animals;
 
 public interface Meow {
-    public String catMayMayMay();
+    public String song();
 }

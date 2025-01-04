@@ -60,11 +60,9 @@ public class Student implements Cloneable, Compare<Student> {
         return save;
     }
 
-
-    public void rollback(int index) {
+    public void back(int index) {
         if (index < 0 || index >= history.size()) {
-            System.out.println("Некорректный индекс для отката.");
-            return;
+            throw new IllegalArgumentException();
         }
         Save save = history.get(index);
         save.load(this);

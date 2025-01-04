@@ -2,7 +2,7 @@ package ru.galkin.geometry;
 
 import java.util.Objects;
 
-public class Point implements Cloneable {
+public class Point implements Cloneable, Geometryable {
 	
 	private int x,y;
 	
@@ -46,5 +46,11 @@ public class Point implements Cloneable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(x,y);
+	}
+
+	@Override
+	public void shift(String name, int num) {
+		if("x".equals(name)) this.setX(num);
+		if ("y".equals(name)) this.setY(num);
 	}
 }
