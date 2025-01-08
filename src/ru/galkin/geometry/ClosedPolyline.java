@@ -8,8 +8,12 @@ public class ClosedPolyline extends Polyline{
     public int getLength(){
         int length = 0;
         if(getPoints().size() >= 3){
-            length += super.getLength();
-            length += new Line(getPoints().getFirst(), getPoints().getLast()).getLength();
+//            length += super.getLength();
+//            length += Line.line2D(   getPoints()
+//                                    .getFirst()
+//                                    ,getPoints()
+//                                    .getLast())
+//                                    .getLength();
         }
         return length;
     }

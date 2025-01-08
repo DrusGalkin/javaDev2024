@@ -13,19 +13,13 @@ public class Cat implements Meow{
         this.count = 0;
     }
 
-    public String catMayMayMay() {
-        String res = "";
-        for (int i = 0; i < count; i++) {
-            if (count > 0) res += "мяу";
-            if (i == count - 1) res += "!";
-            else res += ", ";
-        }
-        return res;
+    public String song() {
+        return "Мяу";
     }
 
     public String toString() {
         ++count;
         if (name == null) return "Мяу";
-        return name + " : " + catMayMayMay();
+        return name + " : " + song();
     }
 }

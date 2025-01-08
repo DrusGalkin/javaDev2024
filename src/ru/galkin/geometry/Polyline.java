@@ -1,10 +1,11 @@
 package ru.galkin.geometry;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class Polyline implements GetLengthLineOrPolyline, PolygonalChain{
+public class Polyline implements GetLengthLineOrPolyline, PolygonalChain, Iterable<Point>{
 	private List<Point> points = new ArrayList<>();
 
 	public Polyline(Point...arr) {
@@ -26,9 +27,9 @@ public class Polyline implements GetLengthLineOrPolyline, PolygonalChain{
 	public int getLength(){
 		int length = 0;
 
-		for(int i = 0; i < points.size()-1; i++){
-			length += new Line(points.get(i), points.get(i+1)).getLength();
-		}
+//		for(int i = 0; i < points.size()-1; i++){
+//			length += Line.line(points.get(i), points.get(i+1)).getLength();
+//		}
 		return length;
 	}
 
@@ -65,5 +66,10 @@ public class Polyline implements GetLengthLineOrPolyline, PolygonalChain{
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(points);
+	}
+
+	@Override
+	public Iterator<Point> iterator() {
+		return points.iterator();
 	}
 }

@@ -11,8 +11,8 @@ public class CounterMeow implements Meow {
     }
 
     @Override
-    public String catMayMayMay() {
-        m.catMayMayMay();
+    public String song() {
+        m.song();
         count++;
         return count +"";
     }
