@@ -1,0 +1,6 @@
+ru.galkin.geometry.Point
+[private int ru.galkin.geometry.Point.x, private int ru.galkin.geometry.Point.y]
+
+ru.galkin.mainNew.AAA
+[int ru.galkin.mainNew.AAA.a2, protected int ru.galkin.mainNew.AAA.a3, public int ru.galkin.mainNew.AAA.a5, private int ru.galkin.mainNew.AAA.a6]
+
