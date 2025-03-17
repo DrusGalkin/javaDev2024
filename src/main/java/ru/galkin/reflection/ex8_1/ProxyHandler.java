@@ -9,47 +9,29 @@ import java.util.stream.Stream;
 
 public class ProxyHandler implements InvocationHandler {
     private Object obj;
-    private Map<Method, Object> cacheMap = new LinkedHashMap<>();
-    private Map<Field, Object> objectState = new LinkedHashMap<>();
+    private Map<Key, Object> cacheMap = new LinkedHashMap<>();
 
     public ProxyHandler(Object obj) {
         this.obj = obj;
     }
 
-    private void checkState(){
-        Class<?> clazz = this.obj.getClass();
-        if(objectState.containsValue(obj)){
-            List<Field> f1List = Arrays.stream(clazz.getDeclaredFields()).distinct().toList();
-            List<Field> f2List = objectState.keySet().stream().distinct().toList();
-            mapChecker(f1List.equals(f2List));
-            return;
-        }
-       Arrays.stream(clazz.getDeclaredFields())
-                       .forEach(f -> objectState.put(f, this.obj));
-        System.out.println("Добавлен в Map");
-    }
-
-    private void mapChecker(boolean eq){
-        if(!eq){
-            System.out.println("cacheMap clear");
-            cacheMap.clear();
-            checkState();
-        }
-    }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        method = obj.getClass().getMethod(method.getName());
-        checkState();
+        method = obj.getClass().getMethod(method.getName(), method.getParameterTypes());
         if(!method.isAnnotationPresent(Cache.class))
             return method.invoke(this.obj, args);
 
-        if (!cacheMap.containsKey(method)) {
-
+        Key key = new Key(method, method.getParameterTypes());
+        if (!cacheMap.containsKey(key)) {
             Object obj2 = method.invoke(this.obj, args);
-            cacheMap.put(method, obj2);
-            return obj2;
+            cacheMap.put(key, obj2);
+            return cacheMap.get(key);
         }
         return cacheMap.get(method);
     }
+}
+
+record Key(Method m, Object...args) {
+
 }

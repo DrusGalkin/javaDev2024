@@ -12,6 +12,7 @@ public class Entity_Test {
     private static final String TEMPLATE_ERROR_NO_EXIST_ANNOTATION = "Аннотирование работает неправильно";
     private static final String TEMPLATE_ERROR_INHERITANCE = "Нет наследуемых полей";
     private static final String TEMPLATE_ERROR_NOT_FOUND_ANNOTATION = "Аннотация не присутствует на данном классе";
+    private static final String TEMPLATE_ERROR_NO_CORRECT_ARGS = "Не корректное значение value в аннотации ToString";
 
     private A a = new A();
     private B b = new B();
@@ -19,6 +20,7 @@ public class Entity_Test {
     private D d = new D();
     private E e = new E();
     private F f = new F();
+    private J j = new J();
 
     @BeforeEach
     public void setUp() {
@@ -28,6 +30,7 @@ public class Entity_Test {
         d = new D();
         e = new E();
         f = new F();
+        j = new J();
     }
 
     @Test
@@ -36,12 +39,12 @@ public class Entity_Test {
     }
 
     @Test
-    public void YES() {
+    public void YES_correct() {
         assertEquals(4, b.getSize(), TEMPLATE_ERROR_TO_STRING_YES);
     }
 
     @Test
-    public void NO() {
+    public void NO_correct() {
         assertEquals(0, c.getSize(), TEMPLATE_ERROR_TO_STRING_NO);
     }
 
@@ -74,6 +77,11 @@ public class Entity_Test {
         assertEquals("NO", annotation.value(), TEMPLATE_ERROR_TO_STRING_YES);
     }
 
+    @Test
+    public void noCorrectArgs_ToString(){
+        ToString tmp = j.getClass().getAnnotation(ToString.class);
+        assertFalse(ToString.YES.equals(tmp.value()) || ToString.NO.equals(tmp.value()), TEMPLATE_ERROR_NO_CORRECT_ARGS);
+    }
 
     @ToString()
     private static final class A extends Entity {
@@ -112,5 +120,9 @@ public class Entity_Test {
     @ToString("NO")
     private static final class F extends B {
         String m;
+    }
+
+    @ToString("dfghjkl;")
+    private static final class J extends Entity{
     }
 }
